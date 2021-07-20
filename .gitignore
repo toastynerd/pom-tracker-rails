@@ -36,4 +36,3 @@ yarn-debug.log*
 .yarn-integrity
 .setup_db_password
 **/*.sw?
-*.lock

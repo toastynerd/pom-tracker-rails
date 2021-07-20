@@ -1,0 +1,9 @@
+.app {
+  display: flex;
+  width: 80vw;
+  max-width: 600px;
+  background-color: #eee;
+  border-radius: 5px;
+  justify-content: center;
+  margin: -1px;
+}

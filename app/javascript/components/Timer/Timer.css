@@ -1,0 +1,19 @@
+.timer-container {
+  font-size: 5em;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.time-left {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.button {
+  width: 40%;
+  height: 3em;
+  margin: 2px;
+  margin-bottom: 2em;
+}

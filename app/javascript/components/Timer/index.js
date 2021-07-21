@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import './Timer.css';
 
 function Timer() {
   const initSeconds = 1500; //25 minutes worth of seconds

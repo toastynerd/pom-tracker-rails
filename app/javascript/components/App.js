@@ -1,10 +1,12 @@
 import React from 'react';
-import { Timer } from './index';
+import Timer from './Timer';
+import PomForm from './PomForm';
 
 function App() {
+  const csrf = document.querySelector("meta[name='csrf-token']").getAttribute('content');
   return (
     <div className="app">
-      <Timer />
+      <PomForm csrf={csrf} />
     </div>
   )
 };

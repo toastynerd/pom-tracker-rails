@@ -1,8 +1,10 @@
 .timer-container {
   font-size: 5em;
   width: 100%;
-  justify-content: center;
   text-align: center;
+  p {
+    margin: 0.5rem .5rem;
+  }
 }
 
 .time-left {
@@ -12,8 +14,13 @@
 }
 
 .button {
+  background-color: #fff;
   width: 40%;
   height: 3em;
   margin: 2px;
   margin-bottom: 2em;
+}
+
+.button:hover {
+  background-color: #f67;
 }

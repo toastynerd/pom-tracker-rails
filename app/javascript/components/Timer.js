@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-function Timer() {
+function Timer(props) {
   const initSeconds = 1500; //25 minutes worth of seconds
   const [seconds, setSeconds] = useState(initSeconds);
   const [isActive, setIsActive] = useState(false);
@@ -13,9 +13,10 @@ function Timer() {
       }, 1000);
     } 
 
-    if (seconds === 0) {
+    if (seconds === 0 && isActive) {
       clearTimeout(timeout);
       setIsActive(false);
+      props.handleFinish();
     }
 
   }, [isActive, seconds]);
@@ -32,14 +33,14 @@ function Timer() {
 
   return (
     <div className="timer-container">
-      <p className="time-left">
+      <div className="time-left">
         <span className="minutes">
           {Math.floor(seconds / 60)}
         </span>:
         <span className="seconds">
           {Math.floor(seconds % 60).toString().padStart(2, '0')}
         </span>
-      </p>
+      </div>
       <button 
         className="button start"
         onClick={toggle}

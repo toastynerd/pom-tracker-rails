@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :pomodoros
       post 'signup', to: 'registrations#create'
+      post 'signin', to: 'sessions#create'
     end
   end
 end

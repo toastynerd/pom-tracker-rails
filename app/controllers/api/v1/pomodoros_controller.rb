@@ -30,6 +30,6 @@ class Api::V1::PomodorosController < ApplicationController
 
   private
   def pomodoro_params
-    params.permit(:task, :notes)
+    params.permit(:task, :notes, :user_id)
   end
 end

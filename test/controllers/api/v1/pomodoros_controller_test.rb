@@ -5,7 +5,8 @@ class Api::V1::PomodorosControllerTest < ActionDispatch::IntegrationTest
     @params = {
       task: 'some test task',
       notes: 'here are the notes for test task',
-      date: Date.new
+      date: Date.new,
+      user_id: users(:test_user)[:id]
     }
   end
 
@@ -38,11 +39,13 @@ class Api::V1::PomodorosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update a pom with a patch" do
-    put api_v1_pomodoro_path pomodoros(:test_pom), params: {task: "some new task"}, xhr: true
+    @params[:task] = "some new task"
+    patch api_v1_pomodoro_path pomodoros(:test_pom), params: @params, xhr: true
 
     assert_response :success
     assert_equal "application/json", @response.media_type
     json_response = JSON.parse(@response.body)
+    puts json_response
     assert_equal "some new task", json_response['task']
   end
 

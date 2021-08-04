@@ -9,7 +9,7 @@ class PomodoroTest < ActiveSupport::TestCase
   end
 
   test "it should save with valid parameters" do
-    pom = Pomodoro.new(@params)
+    pom = users(:test_user).pomodoros.new(@params)
     assert pom.save
   end
 

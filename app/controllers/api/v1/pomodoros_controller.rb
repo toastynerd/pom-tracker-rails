@@ -11,7 +11,7 @@ class Api::V1::PomodorosController < ApplicationController
     if @pom.save 
       render json: @pom
     else
-      render json: @pom.errors
+      render json: @pom.errors, status: :unprocessable_entity
     end
   end
 
@@ -20,7 +20,8 @@ class Api::V1::PomodorosController < ApplicationController
     if @pom.update(pomodoro_params)
       render json: @pom
     else
-      render json: @pom.errors
+      render json: @pom.errors, status: :unprocessable_entity
+
     end
   end
 

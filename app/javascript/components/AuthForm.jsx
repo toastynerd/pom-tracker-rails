@@ -31,7 +31,7 @@ function AuthForm(props) {
     .then(data => {
       props.setToken(data.token);
       const payload = JSON.parse(atob(data.token.split('.')[1]));
-      props.setUser(payload.email);
+      props.setUser(payload);
     });
   };
 

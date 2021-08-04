@@ -31,7 +31,7 @@ function PomForm(props) {
         'X-CSRF-Token': props.csrf,
         'Authorization': `Bearer ${props.token}`
       },
-      body: JSON.stringify(formState)
+      body: JSON.stringify({...formState, user_id: props.user.user_id})
     })
     .then((response) => {
       console.log(response);

@@ -39,4 +39,11 @@ class UserTest < ActiveSupport::TestCase
 
     assert_not user.save
   end
+
+  test "should have a method for token payload" do 
+    user = users(:test_user)
+    assert_not_nil user.to_token_payload
+    assert_equal user.to_token_payload[:user_id], users(:test_user)[:id]
+    assert_equal user.to_token_payload[:email], users(:test_user)[:email]
+  end
 end

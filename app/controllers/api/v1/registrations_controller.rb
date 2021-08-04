@@ -2,7 +2,7 @@ class Api::V1::RegistrationsController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: {token: encode_jwt(user_id: @user[:id])}
+      render json: {token: encode_jwt(@user.to_token_payload)}
     else
       render json: @user.errors
     end

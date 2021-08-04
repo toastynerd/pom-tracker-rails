@@ -3,4 +3,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness:true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
 
   has_many :pomodoros
+
+  def to_token_payload
+    {user_id: self.id, email: self.email}
+  end
 end

@@ -29,6 +29,7 @@ function PomForm(props) {
       headers: {
         'Content-Type': 'application/json',
         'X-CSRF-Token': props.csrf,
+        'Authorization': `Bearer ${props.token}`
       },
       body: JSON.stringify(formState)
     })
@@ -39,7 +40,7 @@ function PomForm(props) {
   };
 
   return (
-    <div class="pom-form-container">
+    <div className="pom-form-container">
       <Timer handleFinish={handleSubmit} />
       <form className="pom-form">
         <label htmlFor="task">Task</label>

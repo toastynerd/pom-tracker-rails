@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 function Timer(props) {
-  const initSeconds = 1500; //25 minutes worth of seconds
+  const initSeconds = 10; //25 minutes worth of seconds
   const [seconds, setSeconds] = useState(initSeconds);
   const [isActive, setIsActive] = useState(false);
   let timeout;

@@ -8,10 +8,14 @@ class Api::V1::PomodorosControllerTest < ActionDispatch::IntegrationTest
       date: Date.new,
       user_id: users(:test_user)[:id]
     }
+    token = JWT.encode({user_id: users(:test_user)[:id]}, Rails.configuration.jwt_secret)
+    @headers = {
+      "Authorization": "Bearer #{token}"
+    }
   end
 
   test "it should have a pom index route" do
-    get api_v1_pomodoros_path, xhr: true
+    get api_v1_pomodoros_path, headers: @headers, xhr: true
 
     assert_response :success
     assert_equal "application/json", @response.media_type
@@ -20,7 +24,7 @@ class Api::V1::PomodorosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create a new pom" do
-    post api_v1_pomodoros_path, params: @params, xhr: true
+    post api_v1_pomodoros_path, params: @params, headers: @headers, xhr: true
 
     assert_response :success
     assert_equal "application/json", @response.media_type
@@ -30,7 +34,7 @@ class Api::V1::PomodorosControllerTest < ActionDispatch::IntegrationTest
 
   test "should update a pom with a put" do
     @params[:task] = "new task"
-    put api_v1_pomodoro_path pomodoros(:test_pom), params: @params, xhr: true
+    put api_v1_pomodoro_path pomodoros(:test_pom), params: @params, headers: @headers, xhr: true
 
     assert_response :success
     assert_equal "application/json", @response.media_type
@@ -40,7 +44,7 @@ class Api::V1::PomodorosControllerTest < ActionDispatch::IntegrationTest
 
   test "should update a pom with a patch" do
     @params[:task] = "some new task"
-    patch api_v1_pomodoro_path pomodoros(:test_pom), params: @params, xhr: true
+    patch api_v1_pomodoro_path pomodoros(:test_pom), params: @params, headers: @headers, xhr: true
 
     assert_response :success
     assert_equal "application/json", @response.media_type
@@ -50,7 +54,7 @@ class Api::V1::PomodorosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "it should delete a pom" do
-    delete api_v1_pomodoro_path pomodoros(:test_pom), xhr: true
+    delete api_v1_pomodoro_path pomodoros(:test_pom), headers: @headers, xhr: true
 
     assert_response :success
     assert_equal "application/json", @response.media_type

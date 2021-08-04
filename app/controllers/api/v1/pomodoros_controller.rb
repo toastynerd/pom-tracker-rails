@@ -1,4 +1,6 @@
 class Api::V1::PomodorosController < ApplicationController
+  before_action :authenticated_user
+
   def index
     @poms = Pomodoro.all
     render json: @poms

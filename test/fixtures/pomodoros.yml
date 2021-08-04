@@ -7,4 +7,5 @@
 test_pom: {
   task: 'to test',
   notes: 'here are the test notes',
+  user: test_user
 }

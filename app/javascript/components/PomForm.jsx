@@ -42,7 +42,7 @@ function PomForm(props) {
   return (
     <div className="pom-form-container">
       <Timer handleFinish={handleSubmit} />
-      <form className="pom-form">
+      <form className="pom form">
         <label htmlFor="task">Task</label>
         <input type="text" name="task" value={formState.task} onChange={handleChange} />
 

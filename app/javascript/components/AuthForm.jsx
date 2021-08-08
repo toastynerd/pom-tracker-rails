@@ -35,12 +35,19 @@ function AuthForm(props) {
     });
   };
 
+  const handleAClick = function(value) {
+    return function(event) {
+      event.preventDefault();
+      setAction(value);
+    }
+  };
+
   return (
     <div>
       <Timer handleFinish={() => console.log('timer done!')} />
-      <h2><a onClick={() => setAction('sign in')}>Sign in</a> or <a onClick={() => setAction('sign up')}>Sign up</a> to track tasks!</h2>
+      <h2><a onClick={handleAClick('sign in')} href="">Sign in</a> or <a onClick={handleAClick('sign up')} href="">Sign up</a> to track tasks!</h2>
       {action &&
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="auth form">
           <label htmlFor="email">Email</label>
           <input type="text" name="email" value={formState.email} onChange={handleChange} />
 
@@ -48,7 +55,7 @@ function AuthForm(props) {
           <input type="password" name="password" value={formState.password} onChange={handleChange} />
 
           {action == 'sign up' && 
-            <div>
+            <div className="confirmation">
               <label htmlFor="password_confirmation">Confirmation</label>
               <input type="password" name="password_confirmation" value={formState.password_confirmation} onChange={handleChange} />
             </div>

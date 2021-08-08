@@ -1,0 +1,17 @@
+.form.auth>div.confirmation {
+  display: flex;
+  flex-direction: column;
+}
+
+.form.auth>button {
+  padding: .75rem; 
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  background-color: white;
+}
+
+.form.auth>button:hover {
+  background-color: #f67;
+}

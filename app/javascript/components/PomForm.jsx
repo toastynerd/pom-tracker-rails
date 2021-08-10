@@ -36,6 +36,11 @@ function PomForm(props) {
     .then((response) => {
       console.log(response);
       setFormState(initValue);
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      props.addPom(data);
     });
   };
 

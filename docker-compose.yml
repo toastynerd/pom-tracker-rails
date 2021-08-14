@@ -36,10 +36,31 @@ services:
     stdin_open: true
     tty: true
     environment:
-      DATABASE_HOST: pom_tracker_db
       POM_TRACKER_DATABASE_PASSWORD: 'pom tracker dev'
       RAILS_ENV: 'development'
+    entrypoint: 'dev-entrypoint.sh'
     command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
     depends_on: 
+      - pom_tracker_db
+
+  pom_tracker_test:
+    image: pom-tracker-rails_pom_tracker_app
+    container_name: pom_tracker_test
+    volumes:
+      - .:/app
+      - shared_data:/var/shared
+      - gem_cache:/usr/local/bundle/gems
+    networks:
+      - test
+    ports:
+      - 3002:3000
+    stdin_open: true
+    tty: true
+    environment:
+      POM_TRACKER_DATABASE_PASSWORD: 'pom tracker dev'
+      RAILS_ENV: 'test'
+    entrypoint: 'test-entrypoint.sh'
+    command: ["rails", "test"]
+    depends_on:
       - pom_tracker_db
 

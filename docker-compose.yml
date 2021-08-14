@@ -37,6 +37,7 @@ services:
     tty: true
     environment:
       POM_TRACKER_DATABASE_PASSWORD: 'pom tracker dev'
+      POM_TRACKER_DB_HOST: pom_tracker_db
       RAILS_ENV: 'development'
     entrypoint: 'dev-entrypoint.sh'
     command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
@@ -58,6 +59,7 @@ services:
     tty: true
     environment:
       POM_TRACKER_DATABASE_PASSWORD: 'pom tracker dev'
+      POM_TRACKER_DB_HOST: pom_tracker_db
       RAILS_ENV: 'test'
     entrypoint: 'test-entrypoint.sh'
     command: ["rails", "test"]
